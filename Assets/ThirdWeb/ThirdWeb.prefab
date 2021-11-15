@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215388147175960866}
   - component: {fileID: 5302173190637068758}
+  - component: {fileID: 7524456904721647622}
   m_Layer: 0
   m_Name: ThirdWeb
   m_TagString: Untagged
@@ -41,5 +42,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e86d078697d39b1448f19619574548a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7524456904721647622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799791463361172460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7def5fb855cccb4dbb96210c3e3c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
