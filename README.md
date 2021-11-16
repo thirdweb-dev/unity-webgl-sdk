@@ -3,8 +3,8 @@
 The SDK requires Message Bridge setup in the website.
 
 ### In the Unity project:
-1. Include the Thirdweb prefab in your Scene. https://github.com/nftlabs/unity-webgl/tree/master/Assets/Thirdweb
-2. Access the ThirdwebSDK however you want! An example use case of the SDK: https://github.com/nftlabs/unity-webgl/blob/master/Assets/Examples/MouseClickTest.cs
+1. Include the `Thirdweb` prefab in your Scene. https://github.com/nftlabs/unity-webgl/tree/master/Assets/Thirdweb
+2. Access the Thirdweb SDK however you want! An example use case of the SDK: https://github.com/nftlabs/unity-webgl/blob/master/Assets/Examples/MouseClickTest.cs
 
 
 ### In the web project:
