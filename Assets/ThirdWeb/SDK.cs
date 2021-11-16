@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Thirdweb
@@ -10,27 +6,43 @@ namespace Thirdweb
     public class SDK : MonoBehaviour
     {
         private Bridge bridge;
-        public Currency currency { get; private set; }
+        private Dictionary<string, Currency> currencyModules = new Dictionary<string, Currency>();
+        private Dictionary<string, NFT> nftModules = new Dictionary<string, NFT>();
+        private Dictionary<string, Market> marketModules = new Dictionary<string, Market>();
 
         private void Start()
         {
             bridge = GetComponent<Bridge>();
-            currency = new Currency(this, bridge);
         }
 
-        [System.Serializable]
-        private struct CheckLoggedInMsg
+        public Currency GetCurrency(string address)
         {
-            public bool result;
+            if (!currencyModules.ContainsKey(address))
+            {
+                currencyModules[address] = new Currency(this, this.bridge, address);
+            }
+
+            return currencyModules[address];
         }
 
-        public async void CheckLoggedIn()
+        public NFT GetNFT(string address)
         {
-            var msg = await bridge.InvokeRoute("thirdweb.logged_in", "{}");
-            var loggedInMsg = JsonUtility.FromJson<CheckLoggedInMsg>(msg);
-            Debug.LogFormat("logged in message: {0}", msg);
-            Debug.LogFormat("logged in: {0}", loggedInMsg.result);
+            if (!nftModules.ContainsKey(address))
+            {
+                nftModules[address] = new NFT(this, this.bridge, address);
+            }
+
+            return nftModules[address];
+        }
+
+        public Market GetMarket(string address)
+        {
+            if (!marketModules.ContainsKey(address))
+            {
+                marketModules[address] = new Market(this, this.bridge, address);
+            }
+
+            return marketModules[address];
         }
     }
 }
-

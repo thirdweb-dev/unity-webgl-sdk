@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -16,12 +15,44 @@ namespace Thirdweb
             public string ack_id;
         }
 
-        public async Task<string> InvokeRoute(string route, string payload)
+        [System.Serializable]
+        private struct Result<T>
         {
-            var ack_id = ThirdWebInvoke(route, payload);
+            public string ack_id;
+            public T result;
+        }
+
+        [System.Serializable]
+        private struct RequestMessageBody
+        {
+            public RequestMessageBody(string[] arguments)
+            {
+                this.arguments = arguments;
+            }
+
+            public string[] arguments;
+        }
+
+        public async Task<T> InvokeRoute<T>(string route, string[] body)
+        {
+            var msg = JsonUtility.ToJson(new RequestMessageBody(body));
+            var ack_id = ThirdwebInvoke(route, msg);
             var tr = new TaskCompletionSource<string>();
             taskMap[ack_id] = tr;
-            return await tr.Task;
+            string result = await tr.Task;
+            // Debug.LogFormat("Result from {0}: {1}", route, result);
+            return JsonUtility.FromJson<Result<T>>(result).result;
+        }
+
+        public async Task<string> InvokeRouteRaw(string route, string[] body)
+        {
+            var msg = JsonUtility.ToJson(new RequestMessageBody(body));
+            var ack_id = ThirdwebInvoke(route, msg);
+            var tr = new TaskCompletionSource<string>();
+            taskMap[ack_id] = tr;
+            string result = await tr.Task;
+            // Debug.LogFormat("Result from {0}: {1}", route, result);
+            return result;
         }
 
         public void Callback(string payload)
@@ -36,7 +67,7 @@ namespace Thirdweb
         }
 
         [DllImport("__Internal")]
-        private static extern string ThirdWebInvoke(string route, string payload);
+        private static extern string ThirdwebInvoke(string route, string payload);
     }
 }
 
