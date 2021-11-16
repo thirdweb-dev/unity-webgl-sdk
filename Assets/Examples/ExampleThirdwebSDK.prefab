@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2720815150302412465}
   - component: {fileID: -5348766383737285548}
   m_Layer: 0
-  m_Name: DemoThirdweb
+  m_Name: ExampleThirdwebSDK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
