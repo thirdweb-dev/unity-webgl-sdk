@@ -15,9 +15,28 @@ The SDK requires Message Bridge setup in the website.
 npm install @3rdweb/sdk @3rdweb/unity-bridge
 ```
 1. In your web app, initialize ThirdwebBridgeSDK: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L11
+```javascript
+// replace RPC url to the correct network RPC url
+const bridge = new ThirdwebBridgeSDK("https://rpc-mumbai.maticvigil.com")
+```
 2. Create UnityInstance in the window context for message bridging: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L20-L30
+```javascript
+const interval = setInterval(() => {
+  if (window.createUnityInstance) {
+    clearInterval(interval);
+    window.createUnityInstance(canvasRef.current, window.unityConfig)
+      .then((unityInstance) => {
+        window.unityInstance = unityInstance;
+      });
+   }
+}, 500);
+```
 3. After connecting wallet, update the ThirdwebBridgeSDK signer whenever a signer is available: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L45-L50
-4. Unity SDK can now make authenticated SDK function calls like transferring asset or buying asset.
+```javascript
+const signer = provider.getSigner();
+bridge.setProviderOrSigner(signer);
+```
+4. Your C# Unity SDK can now make authenticated SDK function calls like transferring asset or buying asset.
 
 ### See Also: Example Unity WebGL Website
 https://github.com/nftlabs/unity-webgl-template
