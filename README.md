@@ -16,8 +16,8 @@ npm install @3rdweb/sdk @3rdweb/unity-bridge
 ```
 1. In your web app, initialize ThirdwebBridgeSDK: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L11
 2. Create UnityInstance in the window context for message bridging: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L20-L30
-3. Update the ThirdwebBridgeSDK signer whenever a signer is available: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L45-L50
-4. Unity SDK is now authenticated with the signer!
+3. After connecting wallet, update the ThirdwebBridgeSDK signer whenever a signer is available: https://github.com/nftlabs/unity-webgl-template/blob/master/src/App.tsx#L45-L50
+4. Unity SDK can now make authenticated SDK function calls like transferring asset or buying asset.
 
 ### See Also: Example Unity WebGL Website
 https://github.com/nftlabs/unity-webgl-template
