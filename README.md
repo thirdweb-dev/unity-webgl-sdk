@@ -4,9 +4,10 @@ The SDK requires Message Bridge setup in the website.
 
 ## Installation
 ### In the Unity project:
-1. Clone this Unity SDK project. Copy `Assets/Thirdweb` into your project.
-2. Include the **`Thirdweb` prefab** in your project / scene. https://github.com/nftlabs/unity-webgl/tree/master/Assets/Thirdweb
-3. Access the Thirdweb SDK however you want! An example use case of the SDK: https://github.com/nftlabs/unity-webgl/blob/master/Assets/Examples/MouseClickTest.cs
+1. Download the unitypackage from https://github.com/nftlabs/unity-webgl/releases
+2. In your Project, Right click -> Import Package -> Custom Package. Select the unitypackage that you downloaded from (1).
+3. Include the **`Thirdweb` prefab** in your scene. https://github.com/nftlabs/unity-webgl/tree/master/Assets/Thirdweb
+4. Access the Thirdweb SDK however you want! An example use case of the SDK: https://github.com/nftlabs/unity-webgl/blob/master/Assets/Examples/MouseClickTest.cs
 
 
 ### In the web project:
