@@ -7,26 +7,14 @@ namespace ThirdwebDemo
 {
     public class MouseClickTest : MonoBehaviour
     {
-        private Thirdweb.SDK sdk;
-
         // Start is called before the first frame update
         void Start()
         {
-            // access the thirdweb sdk component however your project is setup!
-            sdk = GameObject.FindWithTag("thirdweb").GetComponent<Thirdweb.SDK>();
         }
 
         // Update is called once per frame
         void Update()
         {
-
-        }
-
-        [System.Serializable]
-        private struct Result<T>
-        {
-            public string ack_id;
-            public T result;
         }
 
         public async void CheckSomethingFun()
@@ -50,6 +38,9 @@ namespace ThirdwebDemo
             var transferAmount = BigInteger.Multiply(1, BigInteger.Pow(10, 18));
             sdk.GetCurrency("0x56cf9a7992134B789856Ace00229444Cd7337A87").Transfer(transferTo, transferAmount);
             */
+                        
+            // access the thirdweb sdk component however your project is setup!
+            Thirdweb.SDK sdk = GameObject.FindWithTag("thirdweb").GetComponent<Thirdweb.SDK>();
 
             var nfts = await sdk.GetNFT("0x025b435B5ba354c9d0C8772cc36aDEE3957f2A6D").GetAllWithOwner();
             foreach (var n in nfts)
