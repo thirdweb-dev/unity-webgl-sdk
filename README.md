@@ -1,6 +1,4 @@
-# Unity SDK (WebGL)
-
-The SDK requires Message Bridge setup in the website.
+# DEPRECATED - Unity SDK now lives in [https://github.com/thirdweb-dev/unity-sdk](https://github.com/thirdweb-dev/unity-sdk)
 
 ## Installation
 
